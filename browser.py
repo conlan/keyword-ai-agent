@@ -1,7 +1,9 @@
 import psutil
 import time
-from keyboard import Keyboard
 import pyautogui
+import pygetwindow as gw
+
+from keyboard import Keyboard
 
 class BrowserController:
     def __init__(self) -> None:
@@ -25,6 +27,17 @@ class BrowserController:
                 break
 
         print("Found browser process: %d" % self.pid)
+
+    def detectWordsForGame(self):
+        # get active window title
+        window_title = gw.getActiveWindow()
+        # get window dimensions
+        dimensions = gw.getWindowGeometry(window_title)
+        dimensions = tuple(int(x) for x in dimensions)
+
+        # grab a screenshot
+        img = pyautogui.screenshot(region=dimensions)
+        img.show()
 
     def waitForButtonAndClick(self, button_image):
         isLookingForButton = True

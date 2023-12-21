@@ -10,10 +10,11 @@ browser.findBrowserProcess(BROWSER_NAME)
 # Navigate to https://www.washingtonpost.com/games/keyword/
 browser.navigateToURL(KEYWORD_URL)
 
-# TODO Detect and dismiss popups
+# Detect and dismiss popups
 browser.startGame()
 
 # TODO Detect letters and coordinates
+browser.detectWordsForGame()
 
 # TODO solve keyword
 
